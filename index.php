@@ -12,7 +12,7 @@
 
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/general.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link
@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/business-casual.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
 </head>
 

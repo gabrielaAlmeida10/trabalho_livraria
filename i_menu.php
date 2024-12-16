@@ -27,9 +27,9 @@
         <li class="nav-item px-lg-4">
           <a class="nav-link text-uppercase text-expanded" href="form_pesquisar.php">Pesquisa</a>
         </li>
-        <li class="nav-item px-lg-4">
+        <!--   <li class="nav-item px-lg-4">
           <a class="nav-link text-uppercase text-expanded" href="form_testar.php">Testar Banco de Dados</a>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
