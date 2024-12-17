@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <link rel="icon" haref="https://image.flaticon.com/icons/svg/566/566944.svg">
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Pesquisar</title>
+  <title>Excluir</title>
 
   <!-- Bootstrap core CSS -->
   <link href="css/style.css" rel="stylesheet">
@@ -23,8 +23,7 @@
 </head>
 
 <body>
- 
- 
+
   <?php
     include ("i_topo.php");
   ?>
@@ -39,7 +38,7 @@
       <div class="product-item">
         <div class="product-item-description d-flex mr-auto">
           <div class="bg-faded p-5 rounded">
-            <p class="mb-0">Qual livro deseja pesquisar?</p>
+            <p class="mb-0">Qual livro deseja exclur?</p>
           </div>
         </div>
       </div>
@@ -51,23 +50,22 @@
       <div class="product-item">
         <div class="product-item-title d-flex">
           <div class="bg-faded p-5 d-flex mr-auto rounded">
-			     <form action="bd_pesquisar.php" method="post">
-				      Selecione um critério de pesquisa: 
-				      <select name="criterio">
-				        <option value="cod">Código do livro</option>
-				        <option value="nome">Nome</option>
-				        <option value="autor">Autor</option>
-				      </select><br/>
-				      Digite o valor de busca:
-				      <input name="chave" type="text"><br/>
-			       	<input type="submit" value="Envia">
-			     </form>
+           <form  action="bd_excluir.php" method="post">
+              Selecione um critério de pesquisa: 
+              <select name="criterio">
+                <option value="cod">Código do livro</option>
+                <option value="nome">Nome</option>
+                <option value="autor">Autor</option>
+              </select><br/>
+              Digite o valor de busca:
+              <input name="chave" type="text"><br/>
+              <input type="submit" value="Enviar">
+           </form>
           </div>
         </div>
       </div>
     </div>
 </section>
-
  <?php
     include ("i_rodape.php");
   ?>

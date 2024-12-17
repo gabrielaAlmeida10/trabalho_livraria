@@ -1,5 +1,5 @@
-<footer class="footer text-faded text-center py-5">
+<footer class="footer">
 	<div class="container">
-		<p class="m-0 small">Copyright &copy; Storybooke 2024</p>
+		<p class="m-0 small">Copyright &copy; Biblioteca Virtual 2024</p>
 	</div>
 </footer>

@@ -11,7 +11,7 @@
   <title>Pesquisar</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/general.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link
