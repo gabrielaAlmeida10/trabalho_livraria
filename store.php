@@ -32,13 +32,43 @@
             </h2>
             <a href="addBook.php" class="btn btn-success">Adicionar Novo Livro</a>
             <hr>
+            <br />
             <p class="list-unstyled list-hours mb-5 text-left mx-auto">
-            <p>teste</p>
-            <a href="editBook.php" class="btn btn-warning">Editar</a>
-            <a href="deleteBook.php" class="btn btn-danger">Excluir</a>
+              <?php
+              $livros = [
+                ['id' => 1, 'nome' => 'Livro A', 'autor' => 'Autor A', 'qtd' => 10, 'valor' => 29.90],
+                ['id' => 2, 'nome' => 'Livro B', 'autor' => 'Autor B', 'qtd' => 5, 'valor' => 49.90],
+                ['id' => 3, 'nome' => 'Livro C', 'autor' => 'Autor C', 'qtd' => 3, 'valor' => 19.90],
+              ];
+              ?>
 
-
-            </ul>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th>Autor</th>
+                  <th>Quantidade</th>
+                  <th>Valor (R$)</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($livros as $livro): ?>
+                  <tr>
+                    <td><?= $livro['id']; ?></td>
+                    <td><?= htmlspecialchars($livro['nome']); ?></td>
+                    <td><?= htmlspecialchars($livro['autor']); ?></td>
+                    <td><?= $livro['qtd']; ?></td>
+                    <td><?= number_format($livro['valor'], 2, ',', '.'); ?></td>
+                    <td>
+                      <a href="editBook.php?id=<?= $livro['id']; ?>" class="btn btn-warning ">Editar</a>
+                      <a href="deleteBook.php?id=<?= $livro['id']; ?>" class="btn btn-danger">Excluir</a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
             <hr>
           </div>
         </div>

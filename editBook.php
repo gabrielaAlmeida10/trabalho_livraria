@@ -2,80 +2,87 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>Alterar</title>
-
-  <!-- Bootstrap core CSS -->
   <link href="css/style.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
 
   <?php
   include("i_topo.php");
-  ?>
-
-  <?php
   include("i_menu.php");
+
+  if (!isset($_GET['id']) || empty($_GET['id'])) {
+    echo "<p style='color: red; text-align: center;'>ID do livro não fornecido!</p>";
+    exit;
+  }
+
+  $id = intval($_GET['id']);
+  include("conexao.php"); 
+  
+  $query = "SELECT * FROM livros WHERE id = $id";
+  $result = mysqli_query($conn, $query);
+
+  if (mysqli_num_rows($result) > 0) {
+    $livro = mysqli_fetch_assoc($result);
+  } else {
+    echo "<p style='color: red; text-align: center;'>Livro não encontrado!</p>";
+    exit;
+  }
   ?>
-
-  <section class="page-section">
-    <div class="container">
-      <div class="product-item">
-        <div class="product-item-description d-flex mr-auto">
-          <div class="bg-faded p-5 rounded">
-            <p class="mb-0">Qual livro deseja alterar?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="page-section">
     <div class="container">
       <div class="product-item">
         <div class="product-item-title d-flex">
           <div class="bg-faded p-5 d-flex mr-auto rounded">
+            <h2>Alterar Dados do Livro</h2>
+            <?php
+            $livros = [
+              ['id' => 1, 'nome' => 'Livro A', 'autor' => 'Autor A', 'qtd' => 10, 'valor' => 29.90],
+              ['id' => 2, 'nome' => 'Livro B', 'autor' => 'Autor B', 'qtd' => 5, 'valor' => 49.90],
+              ['id' => 3, 'nome' => 'Livro C', 'autor' => 'Autor C', 'qtd' => 3, 'valor' => 19.90],
+            ];
+
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+              echo "<p style='color: red;'>ID do livro não fornecido!</p>";
+              exit;
+            }
+
+            $id = intval($_GET['id']);
+
+            // Busca o livro pelo ID
+            $livro = array_filter($livros, fn($l) => $l['id'] === $id);
+            if (empty($livro)) {
+              echo "<p style='color: red;'>Livro não encontrado!</p>";
+              exit;
+            }
+            $livro = array_values($livro)[0];
+            ?>
+
             <form action="bd_alterar.php" method="post">
-              Selecione um critério de pesquisa:
-              <select name="criterio">
-                <!-- <option value="--">Selecione</option>-->
-                <option value="cod">Código do livro</option>
-                <option value="nome">Nome</option>
-                <option value="autor">Autor</option>
-              </select><br />
-              Digite o valor de busca:
-              <input name="chave" type="text"><br />
-              <input type="submit" value="Envia">
+              <input type="hidden" name="id" value="<?= $livro['id']; ?>">
+              <label for="nome">Nome:</label>
+              <input type="text" name="nome" id="nome" value="<?= htmlspecialchars($livro['nome']); ?>"><br><br>
+
+              <label for="autor">Autor:</label>
+              <input type="text" name="autor" id="autor" value="<?= htmlspecialchars($livro['autor']); ?>"><br><br>
+
+              <label for="qtd">Quantidade:</label>
+              <input type="number" name="qtd" id="qtd" value="<?= $livro['qtd']; ?>"><br><br>
+
+              <label for="valor">Valor (R$):</label>
+              <input type="number" name="valor" id="valor" step="0.01" value="<?= $livro['valor']; ?>"><br><br>
+
+              <input type="submit" value="Salvar Alterações" class="btn btn-success">
             </form>
           </div>
-        </div>
-      </div>
-    </div>
   </section>
 
-  <?php
-  include("i_rodape.php");
-  ?>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <?php include("i_rodape.php"); ?>
 
 </body>
 
