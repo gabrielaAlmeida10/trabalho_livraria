@@ -24,7 +24,6 @@
         ['id' => 3, 'nome' => 'Livro C', 'autor' => 'Autor C', 'qtd' => 3, 'valor' => 19.90],
       ];
 
-      // Verifica se o ID foi passado
       if (!isset($_GET['id']) || empty($_GET['id'])) {
           echo "<p style='color: red;'>ID do livro não fornecido!</p>";
           exit;
@@ -32,7 +31,6 @@
 
       $id = intval($_GET['id']);
 
-      // Busca o livro pelo ID
       $livro = array_filter($livros, fn($l) => $l['id'] === $id);
       if (empty($livro)) {
           echo "<p style='color: red;'>Livro não encontrado!</p>";

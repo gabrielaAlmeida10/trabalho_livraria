@@ -5,10 +5,10 @@
         <a class="nav-link text-uppercase text-expanded" href="store.php">Biblioteca</a>
       </li>
       <li class="nav-item px-lg-4">
-        <a class="nav-link text-uppercase text-expanded" href="cadastrar_livro.php">Usuarios</a>
+        <a class="nav-link text-uppercase text-expanded" href="users.php">Usuarios</a>
       </li>
       <li class="nav-item px-lg-4">
-        <a class="nav-link text-uppercase text-expanded" href="form_excluir.php">Vendas</a>
+        <a class="nav-link text-uppercase text-expanded" href="sales.php">Vendas</a>
       </li>
     </ul>
   </div>
